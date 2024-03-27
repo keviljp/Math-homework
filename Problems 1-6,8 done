@@ -1,0 +1,498 @@
+%% LyX 2.3.7 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\theoremstyle{definition}
+\newtheorem*{defn*}{\protect\definitionname}
+\theoremstyle{remark}
+\newtheorem*{rem*}{\protect\remarkname}
+\theoremstyle{definition}
+\newtheorem*{example*}{\protect\examplename}
+\theoremstyle{plain}
+\newtheorem*{thm*}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{definition}
+\newtheorem{xca}[thm]{\protect\exercisename}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\definitionname}{Definition}
+\providecommand{\examplename}{Example}
+\providecommand{\exercisename}{Exercise}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+
+\subsection*{MTH 471 -- Take-Home Exam 1}
+
+\subsubsection*{Due\emph{:} No later than 3pm, Friday March 22nd.}
+\begin{itemize}
+\item When writing up your solutions/proofs for this take-home, \textbf{do
+NOT}, include \textbf{any }of the exposition, hints, or other comments.
+State only the problem which you are addressing. 
+\item As always, correct notation must be used throughout. Incorrect notation
+will cause point deductions. 
+\item No electronic aid can be used unless explicitly permitted in the statement
+of the problem.
+\end{itemize}
+
+\subsection*{Summing Infinite Sequences}
+
+$\phantom{\int}$\\
+One topic which we will address in the near future is infinite series.
+Of course, you all studied infinite series and convergence of infinite
+serries in Calculus II, but one idea which was not addressed in second
+semester calculus is how to ``sum'' divergent series. What we will
+do here is consider ways to generalized the concept of the sum of
+a convergent series in order to attach a value to a series that may
+not converge. Many of the most well-known methods of summing series
+deal with the \emph{sequence }of partial sums of an infinite series
+(this is what you did in calculus). These methods are therefore concerned
+with sequences as opposed to series and this part of your take-home
+will examine some of them.
+
+As you've seen, the sequences $\left\{ (-1)^{n}\right\} _{n=1}^{\infty}$
+and $\left\{ n\right\} _{n=1}^{\infty}$ are divergent but are of
+quite different character; the first is oscillating and certainly
+bounded and the second diverges to positive infinity. If one looks
+at the individual terms of $\left\{ (-1)^{n}\right\} _{n=1}^{\infty}$;
+i.e. $-1,1,-1,1,\ldots,$ it seems pretty clear that the ``average
+size'' of the terms of this sequence is 0. Our first type of summability
+makes the notion of ``average size'' precise.
+\begin{defn*}
+Let $\left\{ z_{n}\right\} _{n=1}^{\infty}$ be a sequence of real
+numbers and define 
+\[
+\sigma_{n}:=\frac{\sum_{j=1}^{n}z_{j}}{n}
+\]
+for every $n\in\mathbb{N}$. We shall say that $\left\{ z_{n}\right\} _{n=1}^{\infty}$
+is ``sort of'' 1-summable, or $\text{so}_{1}$-summable to $L$ if
+$\lim_{n\to\infty}\sigma_{n}=L$ and we will write, in this case,
+\[
+\text{so}_{1}-\lim_{n\to\infty}z_{n}=L.
+\]
+\end{defn*}
+\begin{rem*}
+Note that $\sigma_{n}$ is just the average of the first $n$ terms
+of the sequence. So, we're asking if the sequence of averages converges. 
+\end{rem*}
+\begin{example*}
+For $z_{n}=(-1)^{n}$, we have 
+\[
+\sigma_{n}=\frac{-1+(-1)^{2}+(-1)^{3}+\cdots+(-1)^{n}}{n}
+\]
+and so 
+\[
+\sigma_{2n}=0
+\]
+while 
+\[
+\sigma_{2n-1}=-\frac{1}{2n-1}.
+\]
+These results tell us that 
+\[
+\text{so}_{1}-\lim_{n\to\infty}z_{n}=0.
+\]
+So, this sequence is summable to 0. 
+\end{example*}
+$\phantom{\int}$
+\begin{example*}
+Let $w_{n}=1$ for all $n\in\mathbb{N}$. It is easy to see that $\sigma_{n}=1$
+for all $n\in\mathbb{N}$ and therefore $\text{so}_{1}-\lim_{n\to\infty}w_{n}=1$.
+Note that $\lim_{n\to\infty}w_{n}=1$. It would appear that if our
+sequence converges then $\lim_{n\to\infty}w_{n}=\text{so}_{1}-\lim_{n\to\infty}w_{n}$. 
+\end{example*}
+\begin{thm*}
+If 
+\[
+\lim_{n\to\infty}z_{n}=L,
+\]
+then 
+\[
+\text{so}_{1}-\lim_{n\to\infty}z_{n}=L.
+\]
+\end{thm*}
+\begin{xca}
+Prove this theorem. The hints below will help you write the proof.
+\textbf{DO NOT }write the proof as a step-by-step verification of
+the comments in the list of hints. Instead, write the proof as a unified
+and well-written exposition.
+\end{xca}
+
+\noindent Hints:
+
+\noindent (1) Break the proof into two cases: (i) $L=0$; (ii) $L\neq0$. 
+
+\noindent (2) In the first case, you wish to show that $\lim_{n\to\infty}\sigma_{n}=0$. 
+
+(a) Choose $\epsilon>0$. Argue that you can make $\vert z_{n}\vert<\epsilon/2$
+for sufficiently large $n$, say for $n\geq N_{1}$, $N_{1}\in\mathbb{N}$.
+
+(b) Let $M:=\max\left\{ \vert z_{1}\vert,\ldots,\vert z_{N_{1}-1}\vert\right\} $.
+Show that 
+\[
+\vert\sigma_{n}\vert\leq\frac{\left(N_{1}-1\right)M}{n}+\frac{\epsilon}{2}
+\]
+for $n\geq N_{1}$. 
+
+(c) Show that you can make 
+\[
+\frac{\left(N_{1}-1\right)M}{n}<\frac{\epsilon}{2}
+\]
+for large enough $n$ and finish this part of the proof. 
+
+\noindent (3) In the second case, $L\neq0$, use the fact that $\lim_{n\to\infty}w_{n}=0$
+where $w_{n}:=z_{n}-L$. \\
+
+\begin{proof}
+    Let $lim_{n\to\infty}z_n=L$.We then observe two cases. For the first, let $L=0$ and pick an $\epsilon\in\mathbb{R}$ such that $\epsilon>0$. Then there exists some $N_1\in\mathbb{N}$ such that $\left|z_n\right|<\frac{\epsilon}{2}$ for all $n>N_1$. Now let $M:=\max\left\{ \vert z_{1}\vert,\ldots,\vert z_{N_{1}-1}\vert\right\} $. See that,
+    
+    \begin{equation*}
+    \begin{aligned}
+        \vert\sigma_n\vert&=\frac{z_1+z_2+\ldots+z_n}{n}\\
+        &\leq\frac{\vert z_1\vert+\vert z_2\vert+\ldots+\vert z_n\vert}{n}\\
+        &\leq\frac{\left(N-1\right)M+\vert z_{N_1}\vert+\ldots+\vert z_n\vert}{n}\\
+        &\leq\frac{\left(N-1\right)M}{n}+\frac{\epsilon}{2}
+    \end{aligned}
+    \end{equation*}
+    for all $n>N_1$. Then, because $lim_{n\to\infty}\frac{\left(N-1\right)M}{n}=0$, there exists $N_2\in\mathbb{N}$ such that for all $n>N_2$, $\frac{\left(N-1\right)M}{n}<\frac{\epsilon}{2}$. Now, for all $n>N_2$, $\vert\sigma_n\vert<\epsilon$ and $lim_{n\to\infty}\sigma_n=L$
+
+    For $L\neq 0$, we define $w_{n}:=z_{n}-L$ and see that $\lim_{n\to\infty}w_{n}=0$. This makes
+    \begin{equation*}
+    \begin{aligned}
+        \sigma_n&=\frac{\left(z_1-L\right)+\left(z_2-L\right)+\ldots+\left(z_n-L\right)}{n}\\
+        &=\frac{z_1+z_2+\ldots+z_n}{n}-L
+    \end{aligned}
+    \end{equation*}
+    but from above, because $\lim_{n\to\infty}w_{n}=0$, $\lim_{n\to\infty}\sigma_{n}=0$ and 
+     \begin{equation*}
+    \begin{aligned}
+        L&=\frac{z_1+z_2+\ldots+z_n}{n}
+    \end{aligned}
+    \end{equation*}
+    as required. 
+\end{proof}
+
+The theorem above tells us that all convergent sequences are $\text{so}_{1}$
+- summable to their limit. We've also seen that the divergent sequence
+$\left\{ (-1)^{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{1}$ -
+summable. However, the sequence $\left\{ n\right\} _{n=1}^{\infty}$
+is not $\text{so}_{1}$ - summable.
+\begin{xca}
+Verify the last assertion just above.\\
+\end{xca}
+\begin{proof}
+    Here, 
+    \begin{equation*}
+    \begin{aligned}
+        \sigma_n&=\frac{1+2+3+\ldots+n}{n}\\
+        &=\frac{n\left(n+1\right)}{2n}\\
+        &=\frac{n+1}{2}.
+    \end{aligned}
+    \end{equation*}
+    Clearly, $lim_{n\to\infty}\sigma_n=\infty$ so it is not $\text{so}_{1}$ - summable.
+\end{proof}
+The sequence $1,-1,2,-2,3,-3,\ldots$ is oscillating. Is this sequence
+$\text{so}_{1}$ - summable?
+
+\begin{xca}
+Show that the sequence $1,-1,2,-2,3,-3,\ldots$ is not $\text{so}_{1}$
+- summable by looking at odd $n$ and even $n$ separately. 
+\end{xca}
+\begin{proof}
+    For all even n, 
+    \begin{equation*}
+    \begin{aligned}
+        \sigma_{2n}&=\frac{1-1+2-2+...+n-n}{2n}\\
+        &=0\\
+    \end{aligned}
+    \end{equation*}
+    and for odd n, 
+    \begin{equation*}
+    \begin{aligned}
+        \sigma_{2n-1}&=\frac{1-1+2-2+...+n}{2n-1}\\
+        &=\frac{n}{2n-1}
+    \end{aligned}
+    \end{equation*}
+    and by L'Hopitals, $lim_{n\to\infty}\sigma_{2n-1}=\frac{1}{2}$. But because the two sub-series of $\sigma_n$ have different limits, $lim_{n\to\infty}\sigma_n$ does not exist, and the sequence is not $\text{so}_{1}$ summable.
+\end{proof}
+
+$\phantom{\vert}$
+\begin{xca}
+Let $\theta\in\mathbb{Q}$. Define 
+\[
+s_{n}=\sin\left(n\theta\pi\right).
+\]
+It turns out that this sequence diverges. (You do not have to show
+this.) By finding an identity for 
+\[
+\sin x+\sin2x+\sin3x+\cdots+\sin nx,
+\]
+\vfill\pagebreak show that 
+\[
+\text{so}_{1}-\lim_{n\to\infty}s_{n}=0.
+\]
+(It's worth noting that the sequence $\left\{ s_{n}\right\} _{n=1}^{\infty}$
+also diverges for irrational $\theta$ and that for irrational $\theta$,
+the same summability result holds.)
+\end{xca}
+
+\begin{proof}
+    By Lagrange's trigonometric identity, 
+    \begin{equation*}
+    \begin{aligned}\sum^{\infty}_{k=0}sin(kx)=\frac{cos\left(\frac{x}{2}\right)-cos\left(\left(n+\frac{1}{2}\right)x\right)}{2sin\left(\frac{x}{2}\right)}
+    \end{aligned}
+    \end{equation*}
+    for $x\neq0$ (mod2 \(\pi\)). Let $x=\theta\pi$ for any $\theta\in\mathbb{R}\setminus\mathbb{Q}$. We now see that, for $s_{n}=\sin\left(n\theta\pi\right)$, 
+    \begin{equation*}
+    \begin{aligned}
+    \sigma_n&=\left\vert\frac{cos\left(\frac{\theta\pi}{2}\right)-cos\left(\left(n+\frac{1}{2}\right)\theta\pi\right)}{2n\cdot sin\left(\frac{\theta\pi}{2}\right)}\right\vert
+    &\leq\frac{1}{n}
+    \end{aligned}
+    \end{equation*}
+    and because $lim_{n\to\infty}\frac{1}{n}=0$, the sequence is $\text{so}_{1}$ - summable. 
+\end{proof}
+
+The following theorem is easy to prove.
+\begin{thm*}
+If $\left\{ s_{n}\right\} _{n=1}^{\infty}$ and $\left\{ t_{n}\right\} _{n=1}^{\infty}$
+are $\text{so}_{1}$ - summable to $L$ and $M$, respectively, then
+$\left\{ s_{n}+t_{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{1}$
+- summable to $L+M$. 
+\end{thm*}
+\begin{xca}
+Prove this theorem.\\
+\end{xca}
+
+\begin{proof}
+    For $\left\{ s_{n}+t_{n}\right\} _{n=1}^{\infty}$, 
+    \begin{equation*}
+    \begin{aligned}
+    \sigma_n&=\frac{\left(s_1+t_1\right)+\left(s_2+t_2\right)+\ldots+\left(s_n+t_n\right)}{n}\\
+    &=\frac{\left(s_1+s_2+\ldots+s_n\right)\left(t_1+t_2+\ldots+t_n\right)}{n}\\
+    &=\sigma_{s_n}+\sigma_{t_n}.
+    \end{aligned}
+    \end{equation*}
+    Then $lim_{n\to\infty}\sigma_n=L+M$
+\end{proof}
+
+We now turn to a different type of summability. 
+\begin{defn*}
+Let $\left\{ z_{n}\right\} _{n=1}^{\infty}$ be a sequence. Define,
+for each $n\in\mathbb{N}$, 
+\begin{align*}
+\tau_{n} & :=\frac{nz_{1}+(n-1)z_{2}+(n-2)z_{3}+\cdots+2z_{n-1}+z_{n}}{1+2+\cdots+n}\\
+ & =\frac{2\left(nz_{1}+(n-1)z_{2}+\cdots+2z_{n-1}+z_{n}\right)}{n(n+1)}.
+\end{align*}
+We say that $\left\{ z_{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{2}$
+- summable to $L$ if $\lim_{n\to\infty}\tau_{n}=L$ and we write
+\[
+\text{so}_{2}-\lim_{n\to\infty}z_{n}=L.
+\]
+\end{defn*}
+It turns out that $\left\{ (-1)^{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{2}$
+- summable to $0$, the same result as for $\text{so}_{1}$ - summability.
+Is it possible that a sequence be $\text{so}_{2}$ - summable but
+not $\text{so}_{1}$ - summable? Define the sequence $\left\{ w_{n}\right\} _{n=1}^{\infty}$
+by 
+\[
+w_{2n}=-n
+\]
+and 
+\[
+w_{2n-1}=n.
+\]
+
+\begin{xca}
+If $n$ is even, show that 
+\[
+\tau_{n}=\frac{n+2}{4(n+1)}
+\]
+and if $n$ is odd show that 
+\[
+\tau_{n}=\frac{n^{2}+4n+3}{4(n^{2}+n)}.
+\]
+What is $\text{so}_{2}-lim_{n\to\infty}w_{n}$ ? \\
+\end{xca}
+\begin{proof}
+    First, we see that 
+    \begin{equation*}
+    w_\ell=
+        \begin{cases}
+        -\frac{\ell}{2} & \text{if $\ell$ is even}\\
+        \frac{1+\ell}{2} & \text{if $\ell$ is odd}.
+        \end{cases}
+    \end{equation*}
+    We can write $\tau_\ell$ for two cases here, first for even $n$, and second for odd $\ell$. When $n$ is even, $w_n=-w_{n-1}$. Thus for even $\ell$, 
+    \begin{equation*}
+        \begin{aligned}
+            \tau_n&=\frac{\left[\left(n\right)-\left(n-1\right)\right]+\left[2\left(n-2\right)-2\left(n-3)\right)\right]+\ldots+\left[2\left(\frac{n}{2}\right)-\left(\frac{n}{2}\right)\right]}{1+2+\ldots+n}\\
+            &=\frac{2\left(1+2+\ldots+\frac{n}{2}\right)}{n\left(n+1\right)}\\
+            &=\frac{\left(\frac{n}{2}\right)\left(\frac{n}{2}+1\right)}{n\left(n+1\right)}\\
+            &=\frac{n+2}{4\left(n+1\right)},
+        \end{aligned}
+    \end{equation*}
+    as required. When $n$ is odd, $w_{n-1}$ is even and $w_{n-1}=\frac{n-1}{2}$ but similar to before, $w{n-1}-w{n-2}$. Thus we see the same sequence but with the ending $w_n$ values shifted and an additional odd term. 
+    \begin{equation*}
+        \begin{aligned}
+            \tau_n&=\frac{\left\{\left[\left(n\right)-\left(n-1\right)\right] +\left[2\left(n-2\right)-2\left(n-3)\right)\right]+\ldots+\left[3\left(\frac{n-1}{2}\right)-\left(2\frac{n-1}{2}\right)\right]\right\}+\left(\frac{n+1}{2}\right)}{1+2+\ldots+n}\\
+            &=\frac{2\left\{\left(1+2+\ldots+\frac{n-1}{2}\right)+\frac{n+1}{2}\right\}}{n\left(n+1\right)}\\
+            &=\frac{\left(\frac{n-1}{2}\right)\left(\frac{n+1}{2}\right)+n+1}{n\left(n+1\right)}\\
+            &=\frac{n^2+4n+3}{4\left(n^2+n\right)}.
+        \end{aligned}
+    \end{equation*}
+    Then, using L'Hopital's rule on both even and odd iterations, $lim_{n\to\infty}\tau_n=\frac{1}{4}$ and $\text{so}_{2}-lim_{n\to\infty}w_{n}=\frac{1}{4}$
+    
+\end{proof}
+We see from Exercises 3 and 6 that there is a sequence which is not
+$\text{so}_{1}$ - summable but \emph{is} $\text{so}_{2}$ - summable.
+What happens if our sequence \emph{is} $\text{so}_{1}$ - summable? 
+\begin{thm*}
+If $\text{so}_{1}-\lim_{n\to\infty}z_{n}=L$, then $\text{so}_{2}-\lim_{n\to\infty}z_{n}=L$.
+\vfill\pagebreak{}
+\end{thm*}
+\begin{xca}
+Prove this theorem. (Follow the same comment made in Exercise 1 as
+to the writing of your proof here.)
+\end{xca}
+
+\noindent Hints:\\
+\noindent (1) As before, the proof is accomplished by breaking it
+into the cases $L=0$ and $L\neq0$. 
+
+\noindent (2) In the case $L=0$ you are assuming that $\lim_{n\to\infty}\sigma_{n}=0$. 
+
+(i) Show that 
+\[
+\tau_{n}=\frac{\sigma_{1}+2\sigma_{2}+\cdots+n\sigma_{n}}{1+2+\cdots+n}.
+\]
+
+(ii) Use (i) and argue that, given $\epsilon>0$, there is an $N_{1}\in\mathbb{N}$
+such that if $n\geq N_{1}$, $\vert\sigma_{n}\vert<\epsilon/2$. 
+
+(iii) Set $M=\max\left\{ \vert\sigma_{1}\vert,\ldots,\vert\sigma_{N_{1}-1}\vert\right\} $
+and show that 
+\[
+\vert\tau_{n}\vert\leq\frac{M\left[\sum_{j=1}^{N_{1}-1}j\right]+\frac{\epsilon}{2}\left[\sum_{j=N_{1}}^{n}j\right]}{\sum_{j=1}^{n}j}
+\]
+and conclude that 
+\[
+\vert\tau_{n}\vert<\frac{MN_{1}\left(N_{1}-1\right)}{n(n+1)}+\frac{\epsilon}{2}
+\]
+for $n\geq N_{1}$. 
+
+(iv) Finish the proof just as in Exercise 1 when $L=0$. 
+
+\noindent (3) In the case $L\neq0$, use the fact that $\text{so}_{1}-\lim_{n\to\infty}\left(z_{n}-L\right)=0$
+and apply the $L=0$ case to obtain $\text{so}_{2}-\lim_{n\to\infty}\left(z_{n}-L\right)=0$.
+Write out $\tau_{n}$ for the sequence $\left\{ z_{n}-L\right\} _{n=1}^{\infty}$
+and finish the proof. \\
+
+\begin{xca}
+Prove that if $\left\{ z_{n}\right\} _{n=1}^{\infty}$ converges to
+$L$ then $\left\{ z_{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{2}$
+- summable to $L$. (This is very easy. Don't do too much!)\\
+\end{xca}
+\begin{proof}
+    By problem 1, given that $\left\{ z_{n}\right\} _{n=1}^{\infty}$ converges to
+$L$ then $\left\{ z_{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{1}$
+- summable to $L$. Then by problem 7, because $\left\{ z_{n}\right\} _{n=1}^{\infty}$ is $\text{so}_{1}$
+- summable to $L$, it is $\text{so}_{2}$
+- summable to $L$.
+\end{proof}
+
+
+\subsection*{Some Fun with Uniform Convergence}
+
+$\phantom{\int}$\\
+We have seen the following definition.
+\begin{defn*}
+For each $n\in\mathbb{N}$, let $f_{n}:D\rightarrow\mathbb{R}$ .
+We say that $\left\{ f_{n}\right\} _{n=1}^{\infty}$ converges uniformly
+to $f$ on $D$ if given $\epsilon>0$, there is a $N\in\mathbb{N}$
+such that whenever $x\in D$ and $n\geq N$ we have 
+\[
+\vert f_{n}(x)-f(x)\vert<\epsilon.
+\]
+\end{defn*}
+Of course, the $N$ in the definition above can only depend on $\epsilon$
+and \textbf{\emph{not }}$x$. 
+\begin{xca}
+Prove that $\left\{ f_{n}\right\} _{n=1}^{\infty}$ converges uniformly
+to $f$ on $D$ if and only if 
+\[
+\lim_{n\to\infty}\sup_{x\in D}\vert f_{n}(x)-f(x)\vert=0.
+\]
+\end{xca}
+
+Of course, we also expect that a sequence of functions converges uniformly
+if and only if the sequence is uniformly Cauchy. (See page 77 of Taylor.) 
+\begin{xca}
+Prove Theorem 3.1.10 of Taylor (that is, ``uniformly Cauchy if and
+only if uniformly convergent.'')
+\end{xca}
+
+Is there any other way to get uniform convergence? The answer is ``yes''
+as the following exercise shows.
+\begin{xca}
+Let $\left\{ f_{n}(x)\right\} _{n=1}^{\infty}$ be a sequence of continuous
+functions on the \textbf{\emph{compact }}domain $D$. Suppose that,
+for any $x\in D$, 
+\[
+f_{1}(x)\leq f_{2}(x)\leq\cdots\leq f_{n}(x)\leq\cdots.
+\]
+If $\left\{ f_{n}(x)\right\} _{n=1}^{\infty}$ converges \emph{point-wise
+}on D to the continuous function $f(x)$, prove that $\left\{ f_{n}(x)\right\} _{n=1}^{\infty}$
+converges uniformly to $f$ on $D$. 
+\end{xca}
+
+\noindent Hints:
+
+\noindent (1) For each $n\in\mathbb{N}$ define $g_{n}(x)=f(x)-f_{n}(x)$.
+Prove that $\left\{ g_{n}(x)\right\} _{n=1}^{\infty}$ converges point-wise
+to $0$. 
+
+\noindent (2) To show that $\left\{ g_{n}(x)\right\} _{n=1}^{\infty}$
+converges uniformly to zero, proceed as follows:
+
+(i) Fix an $\epsilon>0$. For $x\in D$, argue that there is a positive
+integer $N_{x}$ for which $g_{N(x)}(x)<\epsilon/2$. 
+
+(ii) Argue that there is an open set $B_{x}$ containing $x$ such
+that for any $y\in B_{x}$ we have $g_{N_{x}}(y)<\epsilon$. 
+
+(iii) Argue now that the family $\left\{ B_{x}:x\in D\right\} $ constitutes
+an open cover of $D$.
+
+(iv) Use (iii) to find a positive integer $N$ such that for any $y\in D$,
+$0\leq g_{N}(y)<\epsilon$. 
+
+(v) Finally, conclude that for any $n\geq N$ and any $y\in D$, $0\leq g_{n}(y)<\epsilon$.
+\\
+\\
+As a last exercise, do the following.
+\begin{xca}
+For each $n\in\mathbb{N}$, let $f_{n}:[a,b]\to\mathbb{R}$ be a function
+for which $f_{n}^{\prime}(x)$ exists for every $x\in[a,b]$. Assume
+that $\left\{ f_{n}\left(x_{0}\right)\right\} _{n=1}^{\infty}$ converges
+for some $x_{0}\in[a,b]$ and that $\left\{ f_{n}^{\prime}(x)\right\} _{n=1}^{\infty}$
+converges uniformly on $[a,b]$. Prove that $\left\{ f_{n}(x)\right\} _{n=1}^{\infty}$
+converges uniformly on $[a,b]$. (Hint: Show that the sequence is
+uniformly Cauchy. You will need to use the Mean Value Theorem along
+the way.) 
+\end{xca}
+
+
+\end{document}
